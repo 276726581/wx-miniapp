@@ -1,0 +1,42 @@
+<!--pages/detail/detail.wxml-->
+<view class="page">
+  <view class="weui-cells__title">详细信息</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">标题</view>
+      <view class="weui-cell__ft">{{detail.title}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">价格</view>
+      <view class="weui-cell__ft">{{detail.price}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">单位</view>
+      <view class="weui-cell__ft">{{detail.unit}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">省份</view>
+      <view class="weui-cell__ft">{{detail.province}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">城市</view>
+      <view class="weui-cell__ft">{{detail.city}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">发布时间</view>
+      <view class="weui-cell__ft">{{detail.createTime}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">查看微信</view>
+      <view class="weui-cell__ft">{{detail.wechat}}</view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">查看电话</view>
+      <view class="weui-cell__ft">{{detail.phone}}</view>
+    </view>
+  </view>
+  <view class="weui-cells__title">实物图</view>
+  <view class="flex-layout col-layout">
+    <image class="img" src="{{img}}" wx:for="{{detail.imgs}}" wx:for-item="img" mode="aspectFill"></image>
+  </view>
+</view>

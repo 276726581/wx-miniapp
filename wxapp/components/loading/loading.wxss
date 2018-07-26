@@ -1,0 +1,18 @@
+/* components/loading/index.wxss */
+@import "/lib/layout.wxss";
+
+.loading-container {
+  width: 100%;
+  background-color: #fff;
+  height: 100rpx;
+}
+
+.loading-text {
+  font-size: 12pt;
+  color: darkgray;
+}
+
+.loading-icon {
+  width: 70rpx;
+  height: 70rpx;
+}

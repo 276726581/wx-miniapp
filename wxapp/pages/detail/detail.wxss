@@ -1,0 +1,6 @@
+/* pages/detail/detail.wxss */
+@import "/lib/layout.wxss";
+
+.img {
+  width: 100%;
+}

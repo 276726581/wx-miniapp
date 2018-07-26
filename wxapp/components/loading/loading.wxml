@@ -1,0 +1,5 @@
+<!--components/loading/index.wxml-->
+<view class="flex-layout center loading-container" hidden='{{!show}}'>
+  <text class="loading-text">{{loadingText}}</text>
+  <image class="loading-icon" src='/assets/loading.gif' hidden="{{!showLoadingIcon}}"></image>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/test/test.wxml-->
+<view class="page">
+  <button class="weui-btn" type="primary" bind:tap="clickIndex">主页</button>
+    <button class="weui-btn" type="primary" bind:tap="clickdetail">详情</button>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "card": "/components/card/card",
+    "loading": "/components/loading/loading"
+  }
+}
