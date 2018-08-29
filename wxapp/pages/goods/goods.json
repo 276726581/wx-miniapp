@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "货源",
+  "usingComponents": {
+    "goods-card": "/components/goods-card/goods-card",
+    "loading": "/components/loading/loading"
+  }
+}

@@ -1,5 +1,54 @@
 <!--pages/test/test.wxml-->
+
+<import src="/pages/detail/comment/comment.wxml" />
+
 <view class="page">
-  <button class="weui-btn" type="primary" bind:tap="clickIndex">主页</button>
-    <button class="weui-btn" type="primary" bind:tap="clickdetail">详情</button>
+  <!-- <template is="comment" data="{{comment}}" /> -->
+  <!-- <button class="weui-btn" type="primary" bind:tap="clickIndex">主页</button>
+  <button class="weui-btn" type="primary" bind:tap="clickdetail">详情</button> -->
+
+  <!-- <view class='card flex-layout row-layout'>
+    <image src='/assets/icon.png' class='icon'></image>
+    <view class='flex-layout row-layout'>
+      <text class="content fill_parent">Test Test Test Test Test Test Test</text>
+    </view>
+  </view> -->
+  <!-- <view>Test</view>
+  <view class='card flex-layout center'>
+    <view class='com'>
+      <view class='row-wrap'>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+        <image src='/assets/icon.png' class='img'></image>
+      </view>
+    </view>
+  </view>
+  <view class='flex-layout row-layout send-pannel'>
+    <input class='send-input flex-auto'></input>
+    <view class='send-btn'>Send</view>
+  </view> -->
+
+
+  <view>
+    <view id="header">
+      <view class='flex-layout col-layout'>
+        <view class='card flex-layout row-layout'>
+          <image src='/assets/icon.png' class='icon'></image>
+          <view class='flex-layout row-layout'>
+            <text class="content fill_parent" bind:touchmove='touchmove'>Test Test Test Test Test Test Test</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
 </view>

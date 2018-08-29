@@ -1,18 +1,8 @@
 /* components/loading/index.wxss */
-@import "/lib/layout.wxss";
+@import "/lib/wxss/reset.wxss";
+@import "/lib/wxss/layout.wxss";
+@import "/lib/wxss/weui/weui.wxss";
 
-.loading-container {
-  width: 100%;
-  background-color: #fff;
-  height: 100rpx;
-}
-
-.loading-text {
-  font-size: 12pt;
-  color: darkgray;
-}
-
-.loading-icon {
-  width: 70rpx;
-  height: 70rpx;
+.weui-loadmore__tips_in-line {
+  background-color: inherit;
 }

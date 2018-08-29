@@ -4,14 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.0",
+	"libVersion": "2.2.3",
 	"appid": "wx23772a4ce511f926",
 	"projectname": "wxapp",
 	"isGameTourist": false,

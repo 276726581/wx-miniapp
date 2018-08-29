@@ -1,7 +1,12 @@
 {
   "pages": [
+    "pages/goods/goods",
     "pages/test/test",
-    "pages/index/index",
+    "pages/ship/ship",
+    "pages/settings/settings",
+    "pages/auth/auth",
+    "pages/manage/manage",
+    "pages/publish/publish",
     "pages/detail/detail"
   ],
   "window": {
@@ -10,5 +15,31 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "#fff",
     "backgroundColor": "#03a9f4"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "color": "#a9a9a9",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/goods/goods",
+        "text": "货源",
+        "iconPath": "assets/deliver.png",
+        "selectedIconPath": "assets/deliver-select.png"
+      },
+      {
+        "pagePath": "pages/ship/ship",
+        "text": "船源",
+        "iconPath": "assets/shop.png",
+        "selectedIconPath": "assets/shop-select.png"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "管理",
+        "iconPath": "assets/user.png",
+        "selectedIconPath": "assets/user-select.png"
+      }
+    ]
   }
 }

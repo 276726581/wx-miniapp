@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <ship-card wx:key="*this" wx:for="{{items}}" wx:for-item="item" data="{{item}}" bind:onCall="onCall"></ship-card>
+  <loading loadingView="{{loadingView}}"></loading>
+</view>

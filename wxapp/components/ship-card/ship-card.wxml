@@ -1,0 +1,34 @@
+<!--components/card/index.wxml-->
+<view class='card' bind:tap='onTap'>
+  <view class='flex-layout row-layout card-padding'>
+    <view class='flex-layout col-layout'>
+      <view class='flex-layout row-layout'>
+        <image src="{{null!=data?data.avatarUrl:'/assets/user-icon.png'}}" class='icon' mode='aspectFill' />
+        <view class='flex-layout col-layout icon-right-area'>
+          <view class='flex-layout row-layout'>
+            <text class='nickname'>{{null!=data?data.nickName:'nickName'}}</text>
+          </view>
+          <view class='flex-layout row-layout'>
+            <text class='date'>{{null!=data?data.date:'yyyy-MM-dd'}}</text>
+            <view class='flex-layout justify-end'>
+              <view class='phone' wx:if="{{1==showPhone}}" catchtap='onCall'>拨打电话</view>
+              <view class='delete' wx:if="{{1==showDelete}}" catchtap='onDelete'>删除</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='flex-layout row-layout info'>
+        <text class='price align-center'>{{null!=data?data.price:100}}/{{null!=data?data.unit:'吨'}}</text>
+        <view class='flex-layout row-layout justify-end align-center'>
+          <text class='label'>{{null!=data?data.province:'XX'}}</text>
+          <text class='label'>{{null!=data?data.city:'XX'}}</text>
+        </view>
+      </view>
+      <view class='content'>{{null!=data?data.content:'XXXXXXXXXXXXXXXX'}}</view>
+      <view class='row-wrap imgs'>
+        <image src='{{img}}' class='img' mode='aspectFill' wx:key="*this" wx:for="{{null!=data?data.images:['/assets/pic.png','/assets/pic.png','/assets/pic.png']}}" wx:for-item="img" wx:for-index="imageIndex" id="{{imageIndex}}" catchtap='previewImage' />
+      </view>
+      <text class='lcoation'>{{null!=data?data.lcoation:'XX省XX市XX区XXX街道'}}</text>
+    </view>
+  </view>
+</view>

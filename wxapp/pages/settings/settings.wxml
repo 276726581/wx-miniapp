@@ -1,0 +1,21 @@
+<!--pages/settings/settings.wxml-->
+<view class="page">
+  <view class='flex-layout row-layout user-info align-center'>
+    <image src='{{userInfo.avatarUrl}}' class='icon' mode='aspectFill' />
+    <view class='nickname'>{{userInfo.nickName}}</view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <navigator url="{{goodsManageUrl}}" class="weui-cell weui-cell_access weui-cell-height" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">管理发布货源</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="{{shipManageUrl}}" class="weui-cell weui-cell_access weui-cell-height" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">管理发布船源</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="{{collectManageUrl}}" class="weui-cell weui-cell_access weui-cell-height" hover-class="weui-cell_active">
+      <view class="weui-cell__bd ">我的收藏</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+</view>

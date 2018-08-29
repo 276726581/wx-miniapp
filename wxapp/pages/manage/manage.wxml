@@ -1,0 +1,14 @@
+<!--pages/manage/manage.wxml-->
+<view class='container'>
+  <scroll-view class='scroll-pannel' scroll-y="true" bindscrolltolower="scrolltolower">
+    <goods-card wx:if="{{'goods'==viewType}}" showDelete="1" showPhone="0" bind:onDelete="onDelete" wx:for="{{items}}" wx:for-item="item" wx:for-index="index" data="{{item}}" index="{{index}}">
+    </goods-card>
+    <ship-card wx:if="{{'ship'==viewType}}" showDelete="1" showPhone="0" bind:onDelete="onDelete" wx:for="{{items}}" wx:for-item="item" wx:for-index="index" data="{{item}}" index="{{index}}">
+    </ship-card>
+    <loading loadingView="{{loadingView}}"></loading>
+    <view class='fill'></view>
+  </scroll-view>
+  <view class='bottom-bar'>
+    <view class='new-publish' catchtap='newPublish'>新发布</view>
+  </view>
+</view>

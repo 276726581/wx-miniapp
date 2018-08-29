@@ -1,7 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-  <scroll-view scroll-y="true" enable-back-to-top="true">
-    <card wx:for="{{items}}" wx:for-item="item" data="{{item}}"></card>
-  </scroll-view>
-  <loading hasMore="{{hasMore}}" show="{{showLoading}}"></loading>
-</view>

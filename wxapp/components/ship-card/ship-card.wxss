@@ -1,0 +1,97 @@
+/* components/card/index.wxss */
+@import "/lib/wxss/layout.wxss";
+
+.card {
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30rpx;
+}
+
+.card-padding {
+  padding: 20rpx;
+}
+
+.icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.icon-right-area {
+  margin-left: 20rpx;
+}
+
+.date {
+  color: darkgray;
+  font-size: 10pt;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.phone {
+  background-color: green;
+  color: white;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 10pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 10pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: -webkit-box !important;
+  word-break: break-all;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+}
+
+.imgs {
+  margin-top: 10rpx;
+}
+
+.img {
+  width: 220rpx;
+  height: 220rpx;
+  margin: 5rpx;
+}
+
+.label {
+  padding: 0rpx 8rpx 0rpx 8rpx;
+  margin-right: 10rpx;
+  background-color: orange;
+  color: white;
+  font-size: 10pt;
+}
+
+.info {
+  margin-top: 10rpx;
+}
+
+.price {
+  margin-left: 30rpx;
+  color: red;
+  font-size: 18pt;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.lcoation {
+  margin-top: 10rpx;
+  color: #586c95;
+}

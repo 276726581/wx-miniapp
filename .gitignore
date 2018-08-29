@@ -1,0 +1,8 @@
+/ship-keeper-server/.gitignore
+/ship-keeper-server/mvnw
+/ship-keeper-server/mvnw.cmd
+/ship-keeper-server/ship-keeper-server.iml
+/ship-keeper-server/.idea
+/ship-keeper-server/.mvn
+/ship-keeper-server/storage
+/ship-keeper-server/target

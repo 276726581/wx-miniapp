@@ -1,0 +1,62 @@
+.tab-panel {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.line {
+  width: 100%;
+  background-color: #eee;
+  height: 1px;
+}
+
+.comment {
+  background-color: white;
+  width: 100%;
+}
+
+.icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx 0rpx 20rpx 20rpx;
+}
+
+.right-pannel {
+  margin: 0rpx 20rpx;
+}
+
+.nickname {
+  color: #586c95;
+  margin-top: 10rpx;
+}
+
+.comment-content {
+  color: black;
+  font-size: 14px;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.date {
+  color: darkgray;
+  font-size: 12px;
+}
+
+.send-pannel {
+  margin: 10rpx;
+}
+
+.send-input {
+  padding: 0rpx 10rpx;
+  background-color: white;
+  height: 80rpx;
+}
+
+.send-btn {
+  margin-left: 10rpx;
+  background-color: green;
+  color: white;
+  padding: 0rpx 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}

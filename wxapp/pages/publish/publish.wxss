@@ -1,0 +1,31 @@
+/* pages/publish.wxss */
+.deleteHint {
+  color: red;
+}
+
+.form-table {
+  margin-bottom: 100rpx;
+}
+
+.content {
+  height: 400rpx;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.pubish {
+  background-color: green;
+  color: white;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+}

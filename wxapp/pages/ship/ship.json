@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "船源",
+  "usingComponents": {
+    "ship-card": "/components/ship-card/ship-card",
+    "loading": "/components/loading/loading"
+  }
+}

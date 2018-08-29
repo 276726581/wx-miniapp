@@ -1,6 +1,11 @@
 /* pages/detail/detail.wxss */
-@import "/lib/layout.wxss";
+@import "info/info.wxss";
+@import "comment/comment.wxss";
 
-.img {
-  width: 100%;
+.page {
+  height: 100%;
+}
+
+.weui-navbar {
+  background-color: white;
 }

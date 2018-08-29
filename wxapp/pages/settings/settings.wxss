@@ -1,0 +1,23 @@
+/* pages/settings/settings.wxss */
+
+.user-info {
+  width: 100%;
+  height: 200rpx;
+  background-color: #03a9f4;
+}
+
+.icon {
+  width: 140rpx;
+  height: 140rpx;
+  margin-left: 30rpx;
+}
+
+.nickname {
+  color: white;
+  margin-left: 30rpx;
+  font-size: 15pt;
+}
+
+.weui-cell-height {
+  height: 60rpx;
+}

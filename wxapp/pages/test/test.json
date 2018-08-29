@@ -1,1 +1,7 @@
-{}
+{
+  "navigationBarTitleText": "test",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "refresh-view": "/components/loading/loading"
+  }
+}

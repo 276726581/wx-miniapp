@@ -1,18 +1,41 @@
 // pages/test/test.js
+
+const NO_DATA = 0
+const HAS_MORE = 1
+const NO_MORE = 2
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    loadingView: NO_DATA,
+    scrollViewHeight: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this
+    var query = wx.createSelectorQuery();
+    wx.getSystemInfo({
+      success: function(res) {
+        var windowHeight = res.windowHeight
+        query.select('#header')
+          .fields({
+            size: true
+          }, function(res) {
+            var headerHeight = res.height
+            that.data.scrollViewHeight = windowHeight - headerHeight
+            console.log(that.data.scrollViewHeight)
+            that.setData({
+              scrollViewHeight: that.data.scrollViewHeight
+            })
+          }).exec()
+      }
+    });
   },
 
   /**
@@ -73,5 +96,31 @@ Page({
     wx.navigateTo({
       url: "/pages/detail/detail"
     })
-  }
+  },
+  scroll(e) {
+    console.log(e)
+  },
+  touchstart(e) {
+    console.log(e)
+  },
+  touchend(e) {
+    console.log(e)
+  },
+  touchmove(e) {
+    console.log(e)
+  },
+  scrolltoupper(e) {
+    console.log(e)
+  },
+  onScrolltolower() {
+    console.log('onScrolltolower')
+    this.onLoadMore()
+  },
+  onClick(e) {
+    console.log('onClick')
+  },
+  onLoadMore() {
+
+  },
+
 })

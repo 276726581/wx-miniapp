@@ -1,5 +1,13 @@
 <!--components/loading/index.wxml-->
-<view class="flex-layout center loading-container" hidden='{{!show}}'>
-  <text class="loading-text">{{loadingText}}</text>
-  <image class="loading-icon" src='/assets/loading.gif' hidden="{{!showLoadingIcon}}"></image>
+<view class="loading">
+  <view class="weui-loadmore weui-loadmore_line" wx:if="{{0==loadingView}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{1==loadingView}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot" wx:if="{{2==loadingView}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot"></view>
+  </view>
 </view>
