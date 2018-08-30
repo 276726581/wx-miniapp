@@ -24,21 +24,25 @@ Page({
   },
   loadUserInfo() {
     var that = this
-    app.userApi.login(function(res, hide) {
+    app.userApi.login(function(res) {
       that.data.userInfo = res.userInfo
       that.setData({
         userInfo: that.data.userInfo
       })
-      hide()
+      wx.hideLoading()
     })
     this.data.goodsManageUrl = "/pages/manage/manage"
     this.data.goodsManageUrl += "?viewType=goods"
 
     this.data.shipManageUrl = "/pages/manage/manage"
     this.data.shipManageUrl += "?viewType=ship"
+
+    this.data.collectManageUrl = "/pages/collect/collect"
+
     this.setData({
       goodsManageUrl: this.data.goodsManageUrl,
-      shipManageUrl: this.data.shipManageUrl
+      shipManageUrl: this.data.shipManageUrl,
+      collectManageUrl: this.data.collectManageUrl
     })
   }
 })

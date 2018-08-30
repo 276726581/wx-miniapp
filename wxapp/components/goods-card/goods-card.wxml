@@ -29,7 +29,10 @@
       <view class='row-wrap imgs'>
         <image src='{{img}}' class='img' mode='aspectFill' wx:key="*this" wx:for="{{null!=data?data.images:['/assets/pic.png','/assets/pic.png','/assets/pic.png']}}" wx:for-item="img" wx:for-index="imageIndex" id="{{imageIndex}}" catchtap='previewImage' />
       </view>
-      <text class='lcoation'>{{null!=data?data.lcoation:'XX省XX市XX区XXX街道'}}</text>
+      <view class='layout address-group' wx:if="{{null!=data && null!=data.address}}">
+        <image src='/assets/location.png' class="address-icon" mode='aspectFill'></image>
+        <text class='address'>{{null!=data?data.address:'XX省XX市XX区XXX街道'}}</text>
+      </view>
     </view>
   </view>
 </view>

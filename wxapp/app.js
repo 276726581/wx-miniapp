@@ -5,12 +5,14 @@ var httpTemplateJs = require('lib/js/http.js')
 var retryTemplateJs = require('lib/js/retry.js')
 var userApiJs = require('lib/js/user.js')
 var locationJs = require('lib/js/location.js')
+var Stack = require('lib/js/stack.js')
 
-var config = configJs.config
-var httpTemplate = httpTemplateJs.httpTemplate
-var retryTemplate = retryTemplateJs.retryTemplate
-var userApi = userApiJs.userApi
-var locationApi = locationJs.locationApi
+var config = configJs
+var httpTemplate = httpTemplateJs
+var retryTemplate = retryTemplateJs
+var userApi = userApiJs
+var locationApi = locationJs
+var pageStack = new Stack()
 
 App({
   config: config,
@@ -19,14 +21,21 @@ App({
   userApi: userApi,
   locationApi: locationApi,
   globalData: {},
+  pageStack: pageStack,
   refreshPage: function(route) {
-    var pages = getCurrentPages()
+    var pages = pageStack.getList()
+    console.log(pages)
     for (var i = 0; i < pages.length; i++) {
       var page = pages[i]
       if (route == page.route) {
         page.refresh()
       }
     }
+  },
+  concatList(list, items) {
+    items.forEach(function(item) {
+      list.push(item)
+    })
   },
   onLaunch: function() {
 

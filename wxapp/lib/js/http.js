@@ -1,8 +1,9 @@
 var retryTemplateJs = require('retry.js')
-var retryTemplate = retryTemplateJs.retryTemplate
-var httpTemplate = {
+var retryTemplate = retryTemplateJs
+
+module.exports = {
   request: function(options) {
-    retryTemplate.execute(function(hide, fail) {
+    retryTemplate.execute(function(fail) {
       wx.request({
         url: options.url,
         data: options.data,
@@ -12,9 +13,9 @@ var httpTemplate = {
         responseType: options.responseType,
         success: function(res) {
           if (200 == res.statusCode) {
-            options.success(res, hide)
+            options.success(res)
           } else {
-            options.fail(res)
+            fail()
           }
         },
         fail: function() {
@@ -24,16 +25,16 @@ var httpTemplate = {
     })
   },
   uploadFile: function(options) {
-    retryTemplate.execute(function(hide, fail) {
+    retryTemplate.execute(function(fail) {
       wx.uploadFile({
         url: options.url,
         filePath: options.filePath,
         name: options.name,
         success: function(res) {
           if (200 == res.statusCode) {
-            options.success(res, hide)
+            options.success(res)
           } else {
-            options.fail(res)
+            fail()
           }
         },
         fail: function() {
@@ -42,7 +43,4 @@ var httpTemplate = {
       })
     })
   }
-}
-module.exports = {
-  httpTemplate
 }

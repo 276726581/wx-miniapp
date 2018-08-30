@@ -20,10 +20,10 @@ var methods = {
       url: uploadUrl,
       filePath: imgInfo.url,
       name: "img",
-      success: function(res, hide) {
+      success: function(res) {
         imgInfo.uploadStatus = true
         imgInfo.resultName = res.data
-        hide()
+        wx.hideLoading()
         that.updateImage(uploadUrl, imgs, index + 1, callback)
       }
     })
@@ -143,7 +143,7 @@ var goods = {
       return
     }
 
-    app.retryTemplate.execute(function(hide, retry) {
+    app.retryTemplate.execute(function(retry) {
       methods.updateImages(that.viewType.uploadImageUrl, data.imgs, function(imgs) {
         data.imgs.forEach(function(item) {
           pubishData.images.push(item.resultName)
@@ -161,7 +161,7 @@ var goods = {
           success: function(res) {
             app.refreshPage("pages/manage/manage")
             app.refreshPage("pages/goods/goods")
-            callback(hide)
+            callback()
           },
           fail: retry
         })
@@ -211,7 +211,7 @@ var ship = {
       return
     }
 
-    app.retryTemplate.execute(function(hide, retry) {
+    app.retryTemplate.execute(function(retry) {
       methods.updateImages(that.viewType.uploadImageUrl, data.imgs, function(imgs) {
         data.imgs.forEach(function(item) {
           pubishData.images.push(item.resultName)
@@ -229,7 +229,7 @@ var ship = {
           success: function(res) {
             app.refreshPage("pages/manage/manage")
             app.refreshPage("pages/ship/ship")
-            callback(hide)
+            callback()
           },
           fail: retry
         })

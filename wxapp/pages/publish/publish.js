@@ -1,18 +1,15 @@
 // pages/publish.js
 
 var cityData = require('city.js')
-var typeLogicJs = require('type-logic.js')
+var apiJs = require('api.js')
 const app = getApp()
 
-var logic = {}
+var api = {}
 var touchStart = 0
 var touchEnd = 0
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     viewType: {},
     goodsTypeSelect: {
@@ -39,18 +36,18 @@ Page({
     imgs: [],
     showChooseImage: true
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  onUnload: function() {
+    app.pageStack.pop()
+  },
   onLoad: function(options) {
+    app.pageStack.push(this)
     wx.hideShareMenu()
 
     var that = this
     if ('goods' == options.viewType) {
-      logic = typeLogicJs.goods
+      api = apiJs.goods
     } else if ('ship' == options.viewType) {
-      logic = typeLogicJs.ship
+      api = apiJs.ship
     } else {
       wx.showToast({
         title: '页面错误',
@@ -60,14 +57,14 @@ Page({
       })
       return
     }
-    that.data.viewType = logic.viewType
+    that.data.viewType = api.viewType
 
-    app.locationApi.getLocationInfo(function(res, hide) {
+    app.locationApi.getLocationInfo(function(res) {
       that.data.location = res.data
       that.setData({
         location: that.data.location
       })
-      hide()
+      wx.hideLoading()
     })
 
     that.data.provinceSelect.arr.push('请选择')
@@ -211,7 +208,8 @@ Page({
     })
   },
   pubish: function() {
-    logic.pubish(this.data, function(hide) {
+    api.pubish(this.data, function() {
+      wx.hideLoading()
       wx.navigateBack()
     })
   }

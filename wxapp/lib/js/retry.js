@@ -1,8 +1,5 @@
-var retryTemplate = {
+module.exports = {
   execute: function(callback) {
-    var hide = function() {
-      wx.hideLoading()
-    }
     var retry = function() {
       wx.hideLoading()
       wx.showModal({
@@ -10,7 +7,7 @@ var retryTemplate = {
         showCancel: true,
         success: function(res) {
           if (res.confirm) {
-            callback(hide, retry)
+            callback(retry)
           } else {
             wx.navigateBack()
           }
@@ -21,11 +18,8 @@ var retryTemplate = {
       title: '请求中',
       mask: true,
       success: function() {
-        callback(hide, retry)
+        callback(retry)
       }
     })
   }
-}
-module.exports = {
-  retryTemplate
 }

@@ -91,7 +91,18 @@
   line-height: 100rpx;
 }
 
-.lcoation {
+.address-icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.address-group {
   margin-top: 10rpx;
+}
+
+.address {
+  height: 30rpx;
+  line-height: 30rpx;
   color: #586c95;
+  font-size: 10pt;
 }
