@@ -4,7 +4,6 @@ import com.jaspercloud.shipkeeper.dto.GoodsDTO;
 import com.jaspercloud.shipkeeper.dto.ShipDTO;
 import com.jaspercloud.shipkeeper.entity.Goods;
 import com.jaspercloud.shipkeeper.entity.Ship;
-import com.jaspercloud.shipkeeper.support.geohash.WGS84Point;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 public final class DTOMapUtil {
@@ -26,11 +25,9 @@ public final class DTOMapUtil {
         right.setImages(left.getImageList());
         right.setPhone(left.getPhone());
         right.setWechat(left.getWechat());
-        right.setLocation(left.getLocation());
-        if (null != left.getLat() && null != left.getLng()) {
-            WGS84Point wgs84Point = new WGS84Point(left.getLat(), left.getLng());
-            right.setWgs84Point(wgs84Point);
-        }
+        right.setAddress(left.getAddress());
+        right.setLat(left.getLat());
+        right.setLng(left.getLng());
     }
 
     public static void map(ShipDTO left, Ship right) {
@@ -45,11 +42,9 @@ public final class DTOMapUtil {
         right.setImageList(left.getImages());
         right.setPhone(left.getPhone());
         right.setWechat(left.getWechat());
-        right.setLocation(left.getLocation());
-        if (null != left.getWgs84Point()) {
-            right.setLat(left.getWgs84Point().getLatitude());
-            right.setLng(left.getWgs84Point().getLongitude());
-        }
+        right.setAddress(left.getAddress());
+        right.setLat(left.getLat());
+        right.setLng(left.getLng());
     }
 
     public static void map(GoodsDTO left, Goods right) {
@@ -65,11 +60,9 @@ public final class DTOMapUtil {
         right.setPhone(left.getPhone());
         right.setContent(left.getContent());
         right.setWechat(left.getWechat());
-        right.setLocation(left.getLocation());
-        if (null != left.getWgs84Point()) {
-            right.setLat(left.getWgs84Point().getLatitude());
-            right.setLng(left.getWgs84Point().getLongitude());
-        }
+        right.setAddress(left.getAddress());
+        right.setLat(left.getLat());
+        right.setLng(left.getLng());
     }
 
     public static void map(Goods left, GoodsDTO right) {
@@ -86,10 +79,8 @@ public final class DTOMapUtil {
         right.setPhone(left.getPhone());
         right.setContent(left.getContent());
         right.setWechat(left.getWechat());
-        right.setLocation(left.getLocation());
-        if (null != left.getLat() && null != left.getLng()) {
-            WGS84Point wgs84Point = new WGS84Point(left.getLat(), left.getLng());
-            right.setWgs84Point(wgs84Point);
-        }
+        right.setAddress(left.getAddress());
+        right.setLat(left.getLat());
+        right.setLng(left.getLng());
     }
 }

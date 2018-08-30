@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/image")
 public class ImageController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -30,7 +30,7 @@ public class ImageController {
     @Autowired
     private ImageCompressService imageCompressService;
 
-    @PostMapping("/upload/image")
+    @PostMapping("/upload")
     public ResponseEntity<String> uploadImage(@RequestParam("img") MultipartFile multipartFile) throws IOException {
         byte[] bytes = multipartFile.getBytes();
         String uuid = ShortUUID.generate();
@@ -40,7 +40,7 @@ public class ImageController {
         return entity;
     }
 
-    @GetMapping("/image/**")
+    @GetMapping("/**")
     public ResponseEntity<byte[]> downloadImage(HttpServletRequest request) {
         try {
             ImageInfo imageInfo = ImageInfoUtil.parse(request);

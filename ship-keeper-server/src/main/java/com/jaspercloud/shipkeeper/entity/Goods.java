@@ -34,12 +34,12 @@ public class Goods {
     private List<String> imageList = new ArrayList<>();
     private String phone;
     private String wechat;
-    private String location;
+    private String address;
     private Double lat;
     private Double lng;
     @Column(name = "geohash_long")
     private Long geoHashLong;
-    @Column(name = "geohash8")
+    @Column(name = "geohash5")
     private String geoHash5;
 
     public Long getId() {
@@ -146,12 +146,12 @@ public class Goods {
         this.wechat = wechat;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void addSpecification(String key, String value) {

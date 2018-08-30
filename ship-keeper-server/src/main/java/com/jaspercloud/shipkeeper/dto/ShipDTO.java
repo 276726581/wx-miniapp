@@ -1,9 +1,6 @@
 package com.jaspercloud.shipkeeper.dto;
 
-import com.jaspercloud.shipkeeper.support.geohash.WGS84Point;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ShipDTO {
@@ -22,8 +19,9 @@ public class ShipDTO {
     private List<String> images = new ArrayList<>();
     private String phone;
     private String wechat;
-    private String location;
-    private WGS84Point wgs84Point;
+    private String address;
+    private Double lat;
+    private Double lng;
 
     public Long getId() {
         return id;
@@ -137,20 +135,28 @@ public class ShipDTO {
         this.wechat = wechat;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public WGS84Point getWgs84Point() {
-        return wgs84Point;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setWgs84Point(WGS84Point wgs84Point) {
-        this.wgs84Point = wgs84Point;
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public ShipDTO() {

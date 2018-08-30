@@ -51,7 +51,7 @@ public class ShipServiceImpl implements ShipService {
 
     @Override
     public void saveShip(ShipDTO shipDTO) {
-        WGS84Point wgs84Point = shipDTO.getWgs84Point();
+        WGS84Point wgs84Point = new WGS84Point(shipDTO.getLat(), shipDTO.getLng());
         GeoHash geoHash = GeoHashUtil.encodeGeoHash(wgs84Point);
         Ship ship = new Ship();
         DTOMapUtil.map(shipDTO, ship);
