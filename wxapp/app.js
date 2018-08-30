@@ -1,64 +1,34 @@
 //app.js
 
 var configJs = require('lib/js/config.js')
+var httpTemplateJs = require('lib/js/http.js')
+var retryTemplateJs = require('lib/js/retry.js')
+var userApiJs = require('lib/js/user.js')
+var locationJs = require('lib/js/location.js')
+
 var config = configJs.config
+var httpTemplate = httpTemplateJs.httpTemplate
+var retryTemplate = retryTemplateJs.retryTemplate
+var userApi = userApiJs.userApi
+var locationApi = locationJs.locationApi
+
 App({
   config: config,
+  httpTemplate: httpTemplate,
+  retryTemplate: retryTemplate,
+  userApi: userApi,
+  locationApi: locationApi,
+  globalData: {},
+  refreshPage: function(route) {
+    var pages = getCurrentPages()
+    for (var i = 0; i < pages.length; i++) {
+      var page = pages[i]
+      if (route == page.route) {
+        page.refresh()
+      }
+    }
+  },
   onLaunch: function() {
 
-  },
-  getLoginResult(callback) {
-    var that = this
-    if (that.globalData.isLogin) {
-      console.log('logined')
-      callback(that.globalData)
-      return
-    }
-
-    var authback = function() {
-      wx.navigateTo({
-        url: "/pages/auth/auth"
-      })
-    }
-    var failback = function(res) {
-      wx.showModal({
-        content: '请求失败请重试',
-        showCancel: false,
-        success: function() {
-          that.getLoginResult(callback)
-        }
-      })
-    }
-    console.log('login')
-    wx.login({
-      success: function(loginRes) {
-        wx.getUserInfo({
-          success: function(userInfoRes) {
-            console.log(userInfoRes)
-            that.globalData.userInfo = userInfoRes.userInfo
-            wx.request({
-              method: "POST",
-              url: config.apiServer + '/api/v1/user/onLogin/' + loginRes.code,
-              data: userInfoRes.userInfo,
-              success: function(onLoginRes) {
-                that.globalData.sessionKey = onLoginRes.data.sessionKey
-                that.globalData.uid = onLoginRes.data.uid
-                that.globalData.isLogin = true
-                callback(that.globalData)
-              },
-              fail: failback
-            })
-          },
-          fail: authback
-        })
-      },
-      fail: failback
-    })
-  },
-  globalData: {
-    isLogin: false,
-    userInfo: null,
-    uid: null,
-    sessionKey: null
   }
 })

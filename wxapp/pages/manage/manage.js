@@ -34,9 +34,10 @@ Page({
   refresh() {
     var that = this
     this.data.loadingView = NO_DATA
-    app.getLoginResult(function(res) {
+    app.userApi.login(function(res, hide) {
       that.data.items = []
       that.getData(res.uid, 10)
+      hide()
     })
   },
   loadMore() {
@@ -157,36 +158,7 @@ Page({
   },
   newPublish: function() {
     var url = '/pages/publish/publish'
-    if ("goods" == this.data.viewType) {
-      url += "?goodsType=true"
-      url += "&price=true"
-      url += "&unit=true"
-      url += "&province=true"
-      url += "&city=true"
-      url += "&phone=true"
-      url += "&content=true"
-      url += "&imgs=true"
-      url += "&pubishUrl=" + app.config.apiServer + "/api/v1/goods"
-      url += "&uploadImageUrl=" + app.config.apiServer + "/api/v1/upload/image"
-    } else if ("ship" == this.data.viewType) {
-      url += "?price=true"
-      url += "&unit=true"
-      url += "&province=true"
-      url += "&city=true"
-      url += "&phone=true"
-      url += "&ais=true"
-      url += "&content=true"
-      url += "&imgs=true"
-      url += "&pubishUrl=" + app.config.apiServer + "/api/v1/ship"
-      url += "&uploadImageUrl=" + app.config.apiServer + "/api/v1/upload/image"
-    } else {
-      wx.showToast({
-        title: '页面错误',
-        success: function() {
-          wx.reLaunch()
-        }
-      })
-    }
+    url += "?viewType=" + this.data.viewType
     console.log(url)
     wx.navigateTo({
       url: url

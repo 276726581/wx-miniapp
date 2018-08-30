@@ -4,8 +4,6 @@ const NO_DATA = 0
 const HAS_MORE = 1
 const NO_MORE = 2
 
-var httpJs = require('../../lib/js/http.js')
-
 var app = getApp()
 
 Page({
@@ -72,10 +70,6 @@ Page({
       return
     }
 
-    wx.showLoading({
-      title: "加载中",
-      mask: true
-    })
     var requestUrl = app.config.apiServer + "/api/v1/comment/list"
     requestUrl += "?commentType=" + detailType
     requestUrl += "&providerId=" + id
@@ -84,25 +78,28 @@ Page({
       requestUrl += "&lastId=" + that.data.comment.items[that.data.comment.items.length - 1].id
     }
     console.log("comment: " + requestUrl)
-    httpJs.request({
-      url: requestUrl,
-      success: function(res) {
-        res.data.forEach(function(item) {
-          that.data.comment.items.push(item)
-        })
-        if (res.data.length <= 0) {
-          that.data.comment.loadingView = NO_MORE
-        } else if (that.data.comment.items.length >= 10) {
-          that.data.comment.loadingView = HAS_MORE
-        } else {
-          that.data.comment.loadingView = NO_MORE
-        }
-        that.data.loadingStatus = false
-        that.setData({
-          comment: that.data.comment
-        })
-        wx.hideLoading()
-      }
+    app.retryTemplate.execute(function(hide, retry) {
+      wx.request({
+        url: requestUrl,
+        success: function(res) {
+          res.data.forEach(function(item) {
+            that.data.comment.items.push(item)
+          })
+          if (res.data.length <= 0) {
+            that.data.comment.loadingView = NO_MORE
+          } else if (that.data.comment.items.length >= 10) {
+            that.data.comment.loadingView = HAS_MORE
+          } else {
+            that.data.comment.loadingView = NO_MORE
+          }
+          that.data.loadingStatus = false
+          that.setData({
+            comment: that.data.comment
+          })
+          hide()
+        },
+        fail: retry
+      })
     })
   },
   loadInfo(detailType, id) {

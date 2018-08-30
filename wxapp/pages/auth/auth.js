@@ -1,4 +1,7 @@
 // pages/auth/auth.js
+
+const app = getApp()
+
 Page({
 
   /**
@@ -25,6 +28,14 @@ Page({
       hasUserInfo: that.data.hasUserInfo,
       userInfo: this.data.userInfo
     })
-    wx.navigateBack()
+    wx.showToast({
+      title: "加载中",
+      mask: true,
+      duration: 3000,
+      success: function() {
+        app.refreshPage("pages/settings/settings")
+        wx.navigateBack()
+      }
+    })
   }
 })

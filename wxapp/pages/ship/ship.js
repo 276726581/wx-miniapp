@@ -15,6 +15,12 @@ Page({
   onLoad: function() {
     this.refresh();
   },
+  onShow: function() {
+    var that = this
+    app.refreshPage(this.pageName, function() {
+      that.refresh()
+    })
+  },
   onPullDownRefresh() {
     console.log('onPullDownRefresh')
   },

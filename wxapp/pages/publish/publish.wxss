@@ -1,4 +1,5 @@
 /* pages/publish.wxss */
+
 .deleteHint {
   color: red;
 }
@@ -28,4 +29,9 @@
   text-align: center;
   height: 100rpx;
   line-height: 100rpx;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
