@@ -10,6 +10,7 @@ import com.jaspercloud.shipkeeper.exception.NotFoundException;
 import com.jaspercloud.shipkeeper.exception.SaveFileException;
 import com.jaspercloud.shipkeeper.service.FileStorageService;
 import com.jaspercloud.shipkeeper.service.GoodsService;
+import com.jaspercloud.shipkeeper.support.geohash.GeoHash;
 import com.jaspercloud.shipkeeper.support.geohash.GeoHashUtil;
 import com.jaspercloud.shipkeeper.support.geohash.WGS84Point;
 import com.jaspercloud.shipkeeper.util.DTOMapUtil;
@@ -51,8 +52,14 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public void saveGoods(GoodsDTO goodsDTO) {
+        WGS84Point wgs84Point = new WGS84Point(goodsDTO.getLat(), goodsDTO.getLng());
+        GeoHash geoHash = GeoHashUtil.encodeGeoHash(wgs84Point);
         Goods goods = new Goods();
         DTOMapUtil.map(goodsDTO, goods);
+        goods.setLat(wgs84Point.getLatitude());
+        goods.setLng(wgs84Point.getLongitude());
+        goods.setGeoHashLong(geoHash.longValue());
+        goods.setGeoHash5(geoHash.toBase32());
         goods.setCreateTime(new Date());
         goodsDao.insertGoods(goods);
     }
