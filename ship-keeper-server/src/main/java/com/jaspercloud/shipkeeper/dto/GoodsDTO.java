@@ -1,5 +1,6 @@
 package com.jaspercloud.shipkeeper.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,22 +9,33 @@ import java.util.Map;
 public class GoodsDTO {
 
     private Long id;
+    @NotNull
     private String uid;
     private String avatarUrl;
     private String nickName;
+    @NotNull
     private String goodsType;
+    @NotNull
     private Integer price;
+    @NotNull
     private String unit;
+    @NotNull
     private String province;
+    @NotNull
     private String city;
+    @NotNull
     private String content;
     private String date;
     private Map<String, String> specificationMap = new HashMap<>();
     private List<String> images = new ArrayList<>();
+    @NotNull
     private String phone;
     private String wechat;
+    @NotNull
     private String address;
+    @NotNull
     private Double lat;
+    @NotNull
     private Double lng;
 
     public Long getId() {

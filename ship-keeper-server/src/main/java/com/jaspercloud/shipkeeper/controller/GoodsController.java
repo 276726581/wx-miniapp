@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class GoodsController {
     private UserService userService;
 
     @PostMapping
-    public void save(@RequestBody GoodsDTO goodsDTO) {
+    public void save(@Valid @RequestBody GoodsDTO goodsDTO) {
         goodsService.saveGoods(goodsDTO);
     }
 

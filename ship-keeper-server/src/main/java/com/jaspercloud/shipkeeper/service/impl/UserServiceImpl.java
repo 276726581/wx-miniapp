@@ -63,7 +63,6 @@ public class UserServiceImpl implements UserService, InitializingBean {
         String sessionKey = map.get("session_key");
         String openid = map.get("openid");
 
-
         User user = transactionTemplate.execute(new TransactionCallback<User>() {
             @Override
             public User doInTransaction(TransactionStatus transactionStatus) {

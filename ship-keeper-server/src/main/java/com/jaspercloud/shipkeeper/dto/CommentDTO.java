@@ -1,14 +1,20 @@
 package com.jaspercloud.shipkeeper.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class CommentDTO {
 
     private Long id;
+    @NotNull
     private String senderId;
+    @NotNull
     private String providerId;
     private String avatarUrl;
     private String nickName;
+    @NotNull
     private String content;
     private String date;
+    @NotNull
     private String commentType;
 
     public Long getId() {

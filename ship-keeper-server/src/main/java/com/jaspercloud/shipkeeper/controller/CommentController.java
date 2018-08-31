@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class CommentController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Void> saveComment(@RequestBody CommentDTO comment) {
+    public ResponseEntity<Void> saveComment(@Valid @RequestBody CommentDTO comment) {
         commentService.saveComment(comment);
         ResponseEntity<Void> entity = ResponseEntity.ok().build();
         return entity;

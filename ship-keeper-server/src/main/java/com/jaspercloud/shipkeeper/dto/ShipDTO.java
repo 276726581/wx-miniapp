@@ -1,26 +1,38 @@
 package com.jaspercloud.shipkeeper.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShipDTO {
 
     private Long id;
+    @NotNull
     private String uid;
     private String avatarUrl;
     private String nickName;
+    @NotNull
     private Integer price;
+    @NotNull
     private String unit;
+    @NotNull
     private String province;
+    @NotNull
     private String city;
+    @NotNull
     private String ais;
+    @NotNull
     private String content;
     private String date;
     private List<String> images = new ArrayList<>();
+    @NotNull
     private String phone;
     private String wechat;
+    @NotNull
     private String address;
+    @NotNull
     private Double lat;
+    @NotNull
     private Double lng;
 
     public Long getId() {

@@ -1,9 +1,12 @@
 package com.jaspercloud.shipkeeper.service.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import com.jaspercloud.shipkeeper.dto.LocationInfoDTO;
 import com.jaspercloud.shipkeeper.exception.HttpException;
 import com.jaspercloud.shipkeeper.service.LocationService;
 import com.jaspercloud.shipkeeper.support.geohash.WGS84Point;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,26 +24,37 @@ public class LocationServiceImpl implements LocationService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private Gson gson;
+
     @Override
     public LocationInfoDTO getLocationInfo(WGS84Point wgs84Point) {
         String url = UriComponentsBuilder.fromHttpUrl("https://apis.map.qq.com/ws/geocoder/v1")
                 .queryParam("key", key)
                 .queryParam("location", String.format("%f,%f", wgs84Point.getLatitude(), wgs84Point.getLongitude()))
                 .queryParam("output", "json").build().toUriString();
-        ResponseEntity<ResponseJson> entity = restTemplate.getForEntity(url, ResponseJson.class);
+        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
         if (HttpStatus.OK.value() != entity.getStatusCodeValue()) {
             throw new HttpException(url);
         }
-        ResponseJson responseJson = entity.getBody();
+        String body = entity.getBody();
+        ResponseJson responseJson = gson.fromJson(body, ResponseJson.class);
         if (0 != responseJson.getStatus()) {
             throw new HttpException(responseJson.toString());
         }
         Result result = responseJson.getResult();
-        AdInfo adInfo = result.getAd_info();
+        FormattedAddresses formattedAddresses = result.getFormattedAddresses();
+        AdInfo adInfo = result.getAdInfo();
+        String address;
+        if (null != formattedAddresses && StringUtils.isNotEmpty(formattedAddresses.getRecommend())) {
+            address = formattedAddresses.getRecommend();
+        } else {
+            address = result.getAddress();
+        }
         LocationInfoDTO locationInfoDTO = new LocationInfoDTO();
         locationInfoDTO.setLat(wgs84Point.getLatitude());
         locationInfoDTO.setLng(wgs84Point.getLongitude());
-        locationInfoDTO.setAddress(result.getAddress());
+        locationInfoDTO.setAddress(address);
         locationInfoDTO.setProvince(adInfo.getProvince());
         locationInfoDTO.setCity(adInfo.getCity());
         return locationInfoDTO;
@@ -89,7 +103,10 @@ public class LocationServiceImpl implements LocationService {
     private static class Result {
 
         private String address;
-        private AdInfo ad_info;
+        @SerializedName("formatted_addresses")
+        private FormattedAddresses formattedAddresses;
+        @SerializedName("ad_info")
+        private AdInfo adInfo;
 
         public String getAddress() {
             return address;
@@ -99,12 +116,42 @@ public class LocationServiceImpl implements LocationService {
             this.address = address;
         }
 
-        public AdInfo getAd_info() {
-            return ad_info;
+        public FormattedAddresses getFormattedAddresses() {
+            return formattedAddresses;
         }
 
-        public void setAd_info(AdInfo ad_info) {
-            this.ad_info = ad_info;
+        public void setFormattedAddresses(FormattedAddresses formattedAddresses) {
+            this.formattedAddresses = formattedAddresses;
+        }
+
+        public AdInfo getAdInfo() {
+            return adInfo;
+        }
+
+        public void setAdInfo(AdInfo adInfo) {
+            this.adInfo = adInfo;
+        }
+    }
+
+    private static class FormattedAddresses {
+
+        private String recommend;
+        private String rough;
+
+        public String getRecommend() {
+            return recommend;
+        }
+
+        public void setRecommend(String recommend) {
+            this.recommend = recommend;
+        }
+
+        public String getRough() {
+            return rough;
+        }
+
+        public void setRough(String rough) {
+            this.rough = rough;
         }
     }
 
