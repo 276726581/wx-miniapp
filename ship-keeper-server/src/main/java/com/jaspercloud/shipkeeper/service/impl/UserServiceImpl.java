@@ -8,6 +8,7 @@ import com.jaspercloud.shipkeeper.entity.User;
 import com.jaspercloud.shipkeeper.exception.HttpException;
 import com.jaspercloud.shipkeeper.service.UserService;
 import com.jaspercloud.shipkeeper.util.ShortUUID;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,8 +29,8 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService, InitializingBean {
 
-    private static final String appid = "wx23772a4ce511f926";
-    private static final String appsecret = "c58a2ab253cce8c755ea298ca3910faf";
+    private static final String appid = "wxcb58d815c848bbbf";
+    private static final String appsecret = "ec893773594c7b9ec164c48bcd8fb460";
 
     @Autowired
     private UserDao userDao;
@@ -55,8 +56,13 @@ public class UserServiceImpl implements UserService, InitializingBean {
     @Override
     public UserDTO loginWeChatServer(String code, UserDTO userDTO) {
         Map<String, String> map = getOpenId(code);
+        String errcode = map.get("errcode");
+        if (StringUtils.isNotEmpty(errcode)) {
+            throw new HttpException("wechatServer: " + errcode);
+        }
         String sessionKey = map.get("session_key");
         String openid = map.get("openid");
+
 
         User user = transactionTemplate.execute(new TransactionCallback<User>() {
             @Override

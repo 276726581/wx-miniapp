@@ -7,11 +7,10 @@ var httpTemplate = httpTemplateJs
 var retryTemplate = retryTemplateJs
 
 module.exports = {
-  isLogin: false,
   login: function(callback) {
     var that = this
-    if (that.isLogin) {
-      var app = getApp()
+    var app = getApp()
+    if (app.isLogin) {
       callback(app.globalData, function() {})
       return
     }
@@ -26,8 +25,7 @@ module.exports = {
                 url: url,
                 data: userInfoRes.userInfo,
                 success: function(onLoginRes) {
-                  that.isLogin = true
-                  var app = getApp()
+                  app.isLogin = true
                   app.globalData.userInfo = userInfoRes.userInfo
                   app.globalData.sessionKey = onLoginRes.data.sessionKey
                   app.globalData.uid = onLoginRes.data.uid

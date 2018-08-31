@@ -20,6 +20,7 @@ App({
   retryTemplate: retryTemplate,
   userApi: userApi,
   locationApi: locationApi,
+  isLogin: false,
   globalData: {},
   pageStack: pageStack,
   refreshPage: function(route) {
