@@ -107,21 +107,23 @@ public class ShipServiceImpl implements ShipService {
     public NearByListDTO<Ship> getListByNearby(WGS84Point wgs84Point, int layer, long lastId, int count) {
         List<Ship> resultList = new ArrayList<>();
         List<Ship> tmp;
-        int i = 0;
         do {
-            List<Long> geoList = GeoHashUtil.around(wgs84Point, layer + i);
+            List<Long> geoList = GeoHashUtil.around(wgs84Point, layer);
             tmp = shipDao.getShipListByNearby(geoList, lastId, count);
             resultList.addAll(tmp);
             if (resultList.size() >= count) {
                 break;
             }
             if (tmp.isEmpty()) {
-                i++;
+                layer++;
                 lastId = Long.MAX_VALUE;
+            } else {
+                lastId = tmp.get(tmp.size() - 1).getId();
             }
-        } while (tmp.isEmpty() && resultList.size() < count && i < 10);
-
-        NearByListDTO<Ship> nearByListDTO = new NearByListDTO<>(layer + i, resultList, Long.MAX_VALUE);
+        } while (layer < 30 && resultList.size() < count);
+        NearByListDTO<Ship> nearByListDTO = new NearByListDTO<>(layer, resultList, Long.MAX_VALUE);
+        nearByListDTO.setLat(wgs84Point.getLatitude());
+        nearByListDTO.setLng(wgs84Point.getLongitude());
         if (resultList.isEmpty()) {
             nearByListDTO.setLastId(Long.MAX_VALUE);
         } else {

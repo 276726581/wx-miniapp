@@ -4,7 +4,6 @@ import com.jaspercloud.shipkeeper.dao.GoodsDao;
 import com.jaspercloud.shipkeeper.dto.GoodsDTO;
 import com.jaspercloud.shipkeeper.dto.NearByListDTO;
 import com.jaspercloud.shipkeeper.entity.Goods;
-import com.jaspercloud.shipkeeper.entity.Ship;
 import com.jaspercloud.shipkeeper.exception.ErrorOperationException;
 import com.jaspercloud.shipkeeper.exception.NotFoundException;
 import com.jaspercloud.shipkeeper.exception.SaveFileException;
@@ -108,21 +107,23 @@ public class GoodsServiceImpl implements GoodsService {
     public NearByListDTO<Goods> getListByNearby(WGS84Point wgs84Point, int layer, long lastId, int count) {
         List<Goods> resultList = new ArrayList<>();
         List<Goods> tmp;
-        int i = 0;
         do {
-            List<Long> geoList = GeoHashUtil.around(wgs84Point, layer + i);
+            List<Long> geoList = GeoHashUtil.around(wgs84Point, layer);
             tmp = goodsDao.getShipListByNearby(geoList, lastId, count);
             resultList.addAll(tmp);
             if (resultList.size() >= count) {
                 break;
             }
             if (tmp.isEmpty()) {
-                i++;
+                layer++;
                 lastId = Long.MAX_VALUE;
+            } else {
+                lastId = tmp.get(tmp.size() - 1).getId();
             }
-        } while (tmp.isEmpty() && resultList.size() < count && i < 30);
-
-        NearByListDTO<Goods> nearByListDTO = new NearByListDTO<>(layer + i, resultList, Long.MAX_VALUE);
+        } while (layer < 30 && resultList.size() < count);
+        NearByListDTO<Goods> nearByListDTO = new NearByListDTO<>(layer, resultList, Long.MAX_VALUE);
+        nearByListDTO.setLat(wgs84Point.getLatitude());
+        nearByListDTO.setLng(wgs84Point.getLongitude());
         if (resultList.isEmpty()) {
             nearByListDTO.setLastId(Long.MAX_VALUE);
         } else {
