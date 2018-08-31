@@ -1,8 +1,3 @@
-.tab-panel {
-  box-sizing: border-box;
-  height: 100%;
-  padding-top: 50px;
-}
 
 .line {
   width: 100%;
@@ -42,21 +37,11 @@
   font-size: 12px;
 }
 
-.send-pannel {
-  margin: 10rpx;
-}
-
-.send-input {
-  padding: 0rpx 10rpx;
-  background-color: white;
-  height: 80rpx;
-}
-
-.send-btn {
-  margin-left: 10rpx;
+.publish-comment {
   background-color: green;
   color: white;
   padding: 0rpx 30rpx;
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
 }

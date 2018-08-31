@@ -24,7 +24,6 @@ App({
   pageStack: pageStack,
   refreshPage: function(route) {
     var pages = pageStack.getList()
-    console.log(pages)
     for (var i = 0; i < pages.length; i++) {
       var page = pages[i]
       if (route == page.route) {

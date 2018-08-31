@@ -46,7 +46,6 @@ Page({
   newPublish: function() {
     var url = '/pages/publish/publish'
     url += "?viewType=" + this.data.viewType
-    console.log(url)
     wx.navigateTo({
       url: url
     })

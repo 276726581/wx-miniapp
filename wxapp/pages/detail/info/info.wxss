@@ -1,6 +1,3 @@
-.detail {
-  margin-bottom: 100rpx;
-}
 
 .img {
   width: 100%;
@@ -49,4 +46,15 @@
   text-align: center;
   height: 100rpx;
   line-height: 100rpx;
+}
+
+.label-width {
+  min-width: 150rpx;
+}
+
+.text-overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

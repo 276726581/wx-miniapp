@@ -207,6 +207,16 @@ Page({
       }
     })
   },
+  chooseLocation: function() {
+    var that = this
+    app.locationApi.chooseLocation(function(res) {
+      that.data.location = res.data
+      that.setData({
+        location: that.data.location
+      })
+      wx.hideLoading()
+    })
+  },
   pubish: function() {
     api.pubish(this.data, function() {
       wx.hideLoading()

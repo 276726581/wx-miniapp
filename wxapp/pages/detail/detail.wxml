@@ -3,22 +3,7 @@
 <import src="comment/comment.wxml" />
 
 <view class="page">
-  <view class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for="{{tabs}}" wx:key="*this">
-        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-          <view class="weui-navbar__title">{{item}}</view>
-        </view>
-      </block>
-      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-    </view>
-    <view class="tab-panel">
-      <view hidden="{{activeIndex != 0}}">
-        <template is="info" data="{{detail}}" />
-      </view>
-      <view class='page' hidden="{{activeIndex != 1}}">
-        <template is="comment" data="{{comment}}" />
-      </view>
-    </view>
-  </view>
+  <template is="info" data="{{detail}}" />
+  <template is="comment" data="{{comment}}" />
+  <view class='fill'></view>
 </view>

@@ -55,6 +55,14 @@ Component({
         current: currentUrl, // 当前显示图片的http链接
         urls: urls // 需要预览的图片http链接列表
       })
+    },
+    showLocation() {
+      var that = this
+      wx.openLocation({
+        latitude: Number(that.data.data.lat),
+        longitude: Number(that.data.data.lng),
+        address: that.data.data.address
+      })
     }
   }
 })

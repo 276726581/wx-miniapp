@@ -71,7 +71,7 @@
           <view class="weui-label">定位</view>
         </view>
         <view class="weui-cell__bd">
-          <view class="weui-input text-overflow">{{null==location.address?'定位中...':location.address}}</view>
+          <view class="weui-input text-overflow" catchtap='chooseLocation'>{{null==location.address?'定位中...':location.address}}</view>
         </view>
       </view>
       <view class="weui-cell" wx:if="{{true==viewType.content}}">

@@ -72,7 +72,11 @@ module.exports = {
     app.httpTemplate.request({
       method: "DELETE",
       url: url,
-      success: callback
+      success: function() {
+        app.refreshPage("pages/goods/goods")
+        app.refreshPage("pages/ship/ship")
+        callback()
+      }
     })
   }
 }

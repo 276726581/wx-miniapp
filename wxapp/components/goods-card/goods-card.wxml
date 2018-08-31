@@ -1,5 +1,5 @@
 <!--components/card/index.wxml-->
-<view class='card' bind:tap='onTap'>
+<view class='card' bindtap='onTap'>
   <view class='flex-layout row-layout card-padding'>
     <view class='flex-layout col-layout'>
       <view class='flex-layout row-layout'>
@@ -29,7 +29,7 @@
       <view class='row-wrap imgs'>
         <image src='{{img}}' class='img' mode='aspectFill' wx:key="*this" wx:for="{{null!=data?data.images:['/assets/pic.png','/assets/pic.png','/assets/pic.png']}}" wx:for-item="img" wx:for-index="imageIndex" id="{{imageIndex}}" catchtap='previewImage' />
       </view>
-      <view class='layout address-group' wx:if="{{null!=data && null!=data.address}}">
+      <view class='layout address-group' wx:if="{{null!=data && null!=data.address}}" catchtap='showLocation'>
         <image src='/assets/location.png' class="address-icon" mode='aspectFill'></image>
         <text class='address'>{{null!=data?data.address:'XX省XX市XX区XXX街道'}}</text>
       </view>

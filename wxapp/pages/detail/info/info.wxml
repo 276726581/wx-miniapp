@@ -1,10 +1,10 @@
 <template name="info">
-  <view class='flex-layout col-layout detail'>
+  <view class='flex-layout col-layout'>
     <view class="weui-cells__title">详细信息</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell" wx:for="{{detail.props}}" wx:for-item="prop">
-        <view class="weui-cell__bd">{{prop.key}}</view>
-        <view class="weui-cell__ft">{{prop.value}}</view>
+        <view class="weui-cell__bd label-width">{{prop.key}}</view>
+        <view class="weui-cell__ft text-overflow">{{prop.value}}</view>
       </view>
     </view>
     <view class="weui-cells__title">描述</view>
@@ -13,11 +13,10 @@
     <view class="flex-layout col-layout">
       <image class="img" src="{{img}}" wx:for="{{detail.images}}" wx:for-item="img" mode="widthFix"></image>
     </view>
-    <loading loadingView="0"></loading>
   </view>
   <view class='bottom-bar'>
     <view class='flex-layout row-layout'>
-      <view class='phone' bindtap='call'>拨打电话</view>
+      <view class='phone' bindtap='onCall'>拨打电话</view>
       <view class='collect'>收藏</view>
     </view>
   </view>

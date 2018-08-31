@@ -1,0 +1,11 @@
+<!--pages/comment/comment.wxml-->
+<view class='page'>
+  <view class='layout'>
+    <view class="weui-cells__title">评论</view>
+    <view class='comment-area-pannel'>
+      <textarea class='comment-area' style='width: {{commentArea.width}}rpx; height: {{commentArea.height}}rpx;' maxlength="255" placeholder="请输入评论" bindinput='onCommentInput'>
+      </textarea>
+    </view>
+    <view class='send-btn' catchtap='sendComment'>发送</view>
+  </view>
+</view>

@@ -8,6 +8,7 @@
     "pages/manage/manage",
     "pages/publish/publish",
     "pages/detail/detail",
+    "pages/comment/comment",
     "pages/collect/collect"
   ],
   "window": {

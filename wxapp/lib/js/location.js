@@ -29,9 +29,29 @@ module.exports = {
           url: url,
           success: function(res) {
             callback(res)
-          },
-          fail: retry
+          }
         })
+      })
+    })
+  },
+  chooseLocation(callback) {
+    retryTemplate.execute(function(retry) {
+      wx.chooseLocation({
+        success: function(res) {
+          var url = config.apiServer + "/api/v1/location/info";
+          url += "?lat=" + res.latitude
+          url += "&lng=" + res.longitude
+          console.log(url)
+          httpTemplate.request({
+            url: url,
+            success: function(res) {
+              callback(res)
+            }
+          })
+        },
+        fail: function() {
+          wx.hideLoading()
+        }
       })
     })
   }

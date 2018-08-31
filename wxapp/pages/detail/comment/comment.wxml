@@ -1,9 +1,7 @@
 <template name="comment">
-  <view class='page'>
-    <view class='flex-layout row-layout send-pannel'>
-      <input class='send-input flex-auto' type="text" bindinput='onCommentInput' placeholder='请发表评论内容' value="{{comment.commentContent}}" maxlength='200'></input>
-      <view class='send-btn' catchtap='sendComment'>发送</view>
-    </view>
+  <view>
+    <view class="weui-cells__title">评论</view>
+    <view class='publish-comment' catchtap='onPublishComment'>发布新评论</view>
     <block wx:for="{{comment.items}}" wx:for-item="comment">
       <view class='comment'>
         <view class='flex-layout row-layout'>
